@@ -1,0 +1,14 @@
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\bin\Debug\Week 3.exe.config
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\bin\Debug\Week 3.exe
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\bin\Debug\Week 3.pdb
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\bin\Debug\Week 3.xml
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.vbproj.AssemblyReference.cache
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.vbproj.SuggestedBindingRedirects.cache
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week_3.Form1.resources
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week_3.Resources.resources
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.vbproj.GenerateResource.cache
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.vbproj.CoreCompileInputs.cache
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.exe
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.xml
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week 3.pdb
+C:\Users\sande\OneDrive\Desktop\School\Winter Semester 2023\Visual Basic Programming II\Week 3\Week 3\obj\Debug\Week_3.Form2.resources
