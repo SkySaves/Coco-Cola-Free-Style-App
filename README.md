@@ -1,3 +1,3 @@
 # Coco-Cola-Free-Style-App
-Semester project for Visual Basic class
+Semester project for Visual Basic class.
 VB go brrrrrrrrrrrrrrrrrrrr
