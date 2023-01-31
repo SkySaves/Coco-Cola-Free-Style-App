@@ -1,25 +1,18 @@
 ﻿Imports System.Windows
 
 Public Class MainForm
-    Dim selectedFlavor As String = ColaSelections.flavor
-    Private Sub btnMixDisp_Click(sender As Object, e As EventArgs) Handles btnMixDisp.Click
+    Private selectedFlavor As String
 
-        If rad8oz.Checked = False And rad10oz.Checked = False And rad12oz.Checked = False Then
+    Private Sub btnMixDisp_Click(sender As Object, e As EventArgs) Handles btnMixDisp.Click
+        If Not (rad8oz.Checked Or rad10oz.Checked Or rad12oz.Checked) Then
             ' No radio button is selected
-            MsgBox("Please select a size before dispensing.")
+            MessageBox.Show("Please select a size before dispensing.")
         Else
             Dim oz As Integer
-            If rad8oz.Checked = True Then
-                oz = 8
-            ElseIf rad10oz.Checked = True Then
-                oz = 10
-            ElseIf rad12oz.Checked = True Then
-                oz = 12
-            End If
-            Dim result As Integer = MsgBox("Now dispensing " & oz & " oz of " & selectedFlavor & "." & vbCrLf & "Do you want to proceed?", vbYesNo + vbInformation, "Confirmation")
-            If result = vbYes Then
+            oz = If(rad8oz.Checked, 8, If(rad10oz.Checked, 10, 12))
+            Dim result As DialogResult = MessageBox.Show("Now dispensing " & oz & " oz of " & selectedFlavor & "." & vbCrLf & "Do you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
+            If result = DialogResult.Yes Then
                 ' okay button was clicked
-
             Else
                 ' No button was clicked
             End If
@@ -27,10 +20,9 @@ Public Class MainForm
     End Sub
 
     Private Sub picCola_Click(sender As Object, e As EventArgs) Handles picCola.Click
-        Dim frm As New ColaSelections ' Create an instance of the new form
         Me.Hide() ' Hide the current form
-        frm.Show() ' Show the new form
-        selectedFlavor = "Coca Cola"
+        ColaSelections.ShowDialog() ' Show the new form as modal
+        selectedFlavor = ColaSelections.flavor
     End Sub
 
     Private Sub picDietCola_Click(sender As Object, e As EventArgs) Handles picDietCola.Click
