@@ -1,7 +1,7 @@
 ﻿Imports System.Windows
 
-Public Class Form1
-    Dim selectedFlavor As String = Form2.flavor
+Public Class MainForm
+    Dim selectedFlavor As String = ColaSelections.flavor
     Private Sub btnMixDisp_Click(sender As Object, e As EventArgs) Handles btnMixDisp.Click
 
         If rad8oz.Checked = False And rad10oz.Checked = False And rad12oz.Checked = False Then
@@ -27,7 +27,7 @@ Public Class Form1
     End Sub
 
     Private Sub picCola_Click(sender As Object, e As EventArgs) Handles picCola.Click
-        Dim frm As New Form2 ' Create an instance of the new form
+        Dim frm As New ColaSelections ' Create an instance of the new form
         Me.Hide() ' Hide the current form
         frm.Show() ' Show the new form
         selectedFlavor = "Coca Cola"
