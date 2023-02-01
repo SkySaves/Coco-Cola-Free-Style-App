@@ -43,10 +43,11 @@ Partial Class MainForm
         Me.picMinute = New System.Windows.Forms.PictureBox()
         Me.picSpriteZero = New System.Windows.Forms.PictureBox()
         Me.PicFanta = New System.Windows.Forms.PictureBox()
-        Me.rad8oz = New System.Windows.Forms.RadioButton()
-        Me.rad10oz = New System.Windows.Forms.RadioButton()
-        Me.rad12oz = New System.Windows.Forms.RadioButton()
+        Me.rad16oz = New System.Windows.Forms.RadioButton()
+        Me.rad24oz = New System.Windows.Forms.RadioButton()
+        Me.rad32oz = New System.Windows.Forms.RadioButton()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
+        Me.rad8oz = New System.Windows.Forms.RadioButton()
         CType(Me.picCola, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picColaZero, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -265,11 +266,52 @@ Partial Class MainForm
         Me.PicFanta.TabIndex = 1
         Me.PicFanta.TabStop = False
         '
+        'rad16oz
+        '
+        Me.rad16oz.AutoSize = True
+        Me.rad16oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rad16oz.Location = New System.Drawing.Point(226, 464)
+        Me.rad16oz.Name = "rad16oz"
+        Me.rad16oz.Size = New System.Drawing.Size(97, 36)
+        Me.rad16oz.TabIndex = 2
+        Me.rad16oz.TabStop = True
+        Me.rad16oz.Text = "16oz"
+        Me.rad16oz.UseVisualStyleBackColor = True
+        '
+        'rad24oz
+        '
+        Me.rad24oz.AutoSize = True
+        Me.rad24oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rad24oz.Location = New System.Drawing.Point(342, 464)
+        Me.rad24oz.Name = "rad24oz"
+        Me.rad24oz.Size = New System.Drawing.Size(97, 36)
+        Me.rad24oz.TabIndex = 2
+        Me.rad24oz.TabStop = True
+        Me.rad24oz.Text = "24oz"
+        Me.rad24oz.UseVisualStyleBackColor = True
+        '
+        'rad32oz
+        '
+        Me.rad32oz.AutoSize = True
+        Me.rad32oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rad32oz.Location = New System.Drawing.Point(457, 464)
+        Me.rad32oz.Name = "rad32oz"
+        Me.rad32oz.Size = New System.Drawing.Size(97, 36)
+        Me.rad32oz.TabIndex = 2
+        Me.rad32oz.TabStop = True
+        Me.rad32oz.Text = "32oz"
+        Me.rad32oz.UseVisualStyleBackColor = True
+        '
+        'FileSystemWatcher1
+        '
+        Me.FileSystemWatcher1.EnableRaisingEvents = True
+        Me.FileSystemWatcher1.SynchronizingObject = Me
+        '
         'rad8oz
         '
         Me.rad8oz.AutoSize = True
         Me.rad8oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad8oz.Location = New System.Drawing.Point(170, 464)
+        Me.rad8oz.Location = New System.Drawing.Point(116, 464)
         Me.rad8oz.Name = "rad8oz"
         Me.rad8oz.Size = New System.Drawing.Size(81, 36)
         Me.rad8oz.TabIndex = 2
@@ -277,44 +319,16 @@ Partial Class MainForm
         Me.rad8oz.Text = "8oz"
         Me.rad8oz.UseVisualStyleBackColor = True
         '
-        'rad10oz
-        '
-        Me.rad10oz.AutoSize = True
-        Me.rad10oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad10oz.Location = New System.Drawing.Point(307, 464)
-        Me.rad10oz.Name = "rad10oz"
-        Me.rad10oz.Size = New System.Drawing.Size(97, 36)
-        Me.rad10oz.TabIndex = 2
-        Me.rad10oz.TabStop = True
-        Me.rad10oz.Text = "10oz"
-        Me.rad10oz.UseVisualStyleBackColor = True
-        '
-        'rad12oz
-        '
-        Me.rad12oz.AutoSize = True
-        Me.rad12oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad12oz.Location = New System.Drawing.Point(457, 464)
-        Me.rad12oz.Name = "rad12oz"
-        Me.rad12oz.Size = New System.Drawing.Size(97, 36)
-        Me.rad12oz.TabIndex = 2
-        Me.rad12oz.TabStop = True
-        Me.rad12oz.Text = "12oz"
-        Me.rad12oz.UseVisualStyleBackColor = True
-        '
-        'FileSystemWatcher1
-        '
-        Me.FileSystemWatcher1.EnableRaisingEvents = True
-        Me.FileSystemWatcher1.SynchronizingObject = Me
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(821, 512)
-        Me.Controls.Add(Me.rad12oz)
-        Me.Controls.Add(Me.rad10oz)
+        Me.Controls.Add(Me.rad32oz)
+        Me.Controls.Add(Me.rad24oz)
         Me.Controls.Add(Me.rad8oz)
+        Me.Controls.Add(Me.rad16oz)
         Me.Controls.Add(Me.picSprite)
         Me.Controls.Add(Me.picColaZero)
         Me.Controls.Add(Me.picRoot)
@@ -378,8 +392,9 @@ Partial Class MainForm
     Friend WithEvents picMinute As PictureBox
     Friend WithEvents picSpriteZero As PictureBox
     Friend WithEvents PicFanta As PictureBox
-    Friend WithEvents rad8oz As RadioButton
-    Friend WithEvents rad10oz As RadioButton
-    Friend WithEvents rad12oz As RadioButton
+    Friend WithEvents rad16oz As RadioButton
+    Friend WithEvents rad24oz As RadioButton
+    Friend WithEvents rad32oz As RadioButton
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
+    Friend WithEvents rad8oz As RadioButton
 End Class

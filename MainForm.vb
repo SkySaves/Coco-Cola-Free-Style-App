@@ -4,12 +4,12 @@ Public Class MainForm
     Private selectedFlavor As String
 
     Private Sub btnMixDisp_Click(sender As Object, e As EventArgs) Handles btnMixDisp.Click
-        If Not (rad8oz.Checked Or rad10oz.Checked Or rad12oz.Checked) Then
+        If Not (rad16oz.Checked Or rad16oz.Checked Or rad24oz.Checked Or rad32oz.Checked) Then
             ' No radio button is selected
             MessageBox.Show("Please select a size before dispensing.")
         Else
             Dim oz As Integer
-            oz = If(rad8oz.Checked, 8, If(rad10oz.Checked, 10, 12))
+            oz = If(rad16oz.Checked, 8, If(rad16oz.Checked, 16, If(rad24oz.Checked, 24, 32)))
             Dim result As DialogResult = MessageBox.Show("Now dispensing " & oz & " oz of " & selectedFlavor & "." & vbCrLf & "Do you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
             If result = DialogResult.Yes Then
                 ' okay button was clicked
@@ -18,6 +18,7 @@ Public Class MainForm
             End If
         End If
     End Sub
+
 
     Private Sub picCola_Click(sender As Object, e As EventArgs) Handles picCola.Click
         Me.Hide() ' Hide the current form
