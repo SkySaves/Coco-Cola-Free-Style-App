@@ -48,6 +48,18 @@ Partial Class MainForm
         Me.rad32oz = New System.Windows.Forms.RadioButton()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
         Me.rad8oz = New System.Windows.Forms.RadioButton()
+        Me.chkCola = New System.Windows.Forms.CheckBox()
+        Me.chkDietCoke = New System.Windows.Forms.CheckBox()
+        Me.chkSprite = New System.Windows.Forms.CheckBox()
+        Me.chkColaZero = New System.Windows.Forms.CheckBox()
+        Me.chkSpriteZero = New System.Windows.Forms.CheckBox()
+        Me.chkPibb = New System.Windows.Forms.CheckBox()
+        Me.chkPowerade = New System.Windows.Forms.CheckBox()
+        Me.chkBarqs = New System.Windows.Forms.CheckBox()
+        Me.chkFanta = New System.Windows.Forms.CheckBox()
+        Me.chkDrPepper = New System.Windows.Forms.CheckBox()
+        Me.chkMelloYello = New System.Windows.Forms.CheckBox()
+        Me.chkMinuteMaid = New System.Windows.Forms.CheckBox()
         CType(Me.picCola, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picColaZero, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,9 +81,10 @@ Partial Class MainForm
         'btnReports
         '
         Me.btnReports.BackColor = System.Drawing.Color.Salmon
-        Me.btnReports.Location = New System.Drawing.Point(669, 12)
+        Me.btnReports.Location = New System.Drawing.Point(502, 10)
+        Me.btnReports.Margin = New System.Windows.Forms.Padding(2)
         Me.btnReports.Name = "btnReports"
-        Me.btnReports.Size = New System.Drawing.Size(123, 73)
+        Me.btnReports.Size = New System.Drawing.Size(92, 59)
         Me.btnReports.TabIndex = 0
         Me.btnReports.Text = "Reports"
         Me.btnReports.UseVisualStyleBackColor = False
@@ -79,9 +92,10 @@ Partial Class MainForm
         'btnStatistics
         '
         Me.btnStatistics.BackColor = System.Drawing.Color.Salmon
-        Me.btnStatistics.Location = New System.Drawing.Point(669, 91)
+        Me.btnStatistics.Location = New System.Drawing.Point(502, 74)
+        Me.btnStatistics.Margin = New System.Windows.Forms.Padding(2)
         Me.btnStatistics.Name = "btnStatistics"
-        Me.btnStatistics.Size = New System.Drawing.Size(123, 73)
+        Me.btnStatistics.Size = New System.Drawing.Size(92, 59)
         Me.btnStatistics.TabIndex = 0
         Me.btnStatistics.Text = "Statistics"
         Me.btnStatistics.UseVisualStyleBackColor = False
@@ -89,9 +103,10 @@ Partial Class MainForm
         'btnSyrupLvl
         '
         Me.btnSyrupLvl.BackColor = System.Drawing.Color.Salmon
-        Me.btnSyrupLvl.Location = New System.Drawing.Point(669, 170)
+        Me.btnSyrupLvl.Location = New System.Drawing.Point(502, 138)
+        Me.btnSyrupLvl.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSyrupLvl.Name = "btnSyrupLvl"
-        Me.btnSyrupLvl.Size = New System.Drawing.Size(123, 73)
+        Me.btnSyrupLvl.Size = New System.Drawing.Size(92, 59)
         Me.btnSyrupLvl.TabIndex = 0
         Me.btnSyrupLvl.Text = "Syrup Level"
         Me.btnSyrupLvl.UseVisualStyleBackColor = False
@@ -99,9 +114,10 @@ Partial Class MainForm
         'btnOrderSyrup
         '
         Me.btnOrderSyrup.BackColor = System.Drawing.Color.Salmon
-        Me.btnOrderSyrup.Location = New System.Drawing.Point(669, 249)
+        Me.btnOrderSyrup.Location = New System.Drawing.Point(502, 202)
+        Me.btnOrderSyrup.Margin = New System.Windows.Forms.Padding(2)
         Me.btnOrderSyrup.Name = "btnOrderSyrup"
-        Me.btnOrderSyrup.Size = New System.Drawing.Size(123, 73)
+        Me.btnOrderSyrup.Size = New System.Drawing.Size(92, 59)
         Me.btnOrderSyrup.TabIndex = 0
         Me.btnOrderSyrup.Text = "Re-Order Syrup"
         Me.btnOrderSyrup.UseVisualStyleBackColor = False
@@ -109,9 +125,10 @@ Partial Class MainForm
         'btnMixDisp
         '
         Me.btnMixDisp.BackColor = System.Drawing.Color.Red
-        Me.btnMixDisp.Location = New System.Drawing.Point(669, 427)
+        Me.btnMixDisp.Location = New System.Drawing.Point(502, 347)
+        Me.btnMixDisp.Margin = New System.Windows.Forms.Padding(2)
         Me.btnMixDisp.Name = "btnMixDisp"
-        Me.btnMixDisp.Size = New System.Drawing.Size(123, 73)
+        Me.btnMixDisp.Size = New System.Drawing.Size(92, 59)
         Me.btnMixDisp.TabIndex = 0
         Me.btnMixDisp.Text = "Mix/Dispense"
         Me.btnMixDisp.UseVisualStyleBackColor = False
@@ -119,9 +136,10 @@ Partial Class MainForm
         'picCola
         '
         Me.picCola.Image = CType(resources.GetObject("picCola.Image"), System.Drawing.Image)
-        Me.picCola.Location = New System.Drawing.Point(12, 12)
+        Me.picCola.Location = New System.Drawing.Point(9, 10)
+        Me.picCola.Margin = New System.Windows.Forms.Padding(2)
         Me.picCola.Name = "picCola"
-        Me.picCola.Size = New System.Drawing.Size(152, 136)
+        Me.picCola.Size = New System.Drawing.Size(114, 110)
         Me.picCola.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picCola.TabIndex = 1
         Me.picCola.TabStop = False
@@ -129,9 +147,10 @@ Partial Class MainForm
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(170, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(128, 10)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(152, 136)
+        Me.PictureBox1.Size = New System.Drawing.Size(114, 110)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
@@ -139,9 +158,10 @@ Partial Class MainForm
         'picColaZero
         '
         Me.picColaZero.Image = CType(resources.GetObject("picColaZero.Image"), System.Drawing.Image)
-        Me.picColaZero.Location = New System.Drawing.Point(328, 12)
+        Me.picColaZero.Location = New System.Drawing.Point(246, 10)
+        Me.picColaZero.Margin = New System.Windows.Forms.Padding(2)
         Me.picColaZero.Name = "picColaZero"
-        Me.picColaZero.Size = New System.Drawing.Size(152, 136)
+        Me.picColaZero.Size = New System.Drawing.Size(114, 110)
         Me.picColaZero.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picColaZero.TabIndex = 1
         Me.picColaZero.TabStop = False
@@ -149,9 +169,10 @@ Partial Class MainForm
         'picSprite
         '
         Me.picSprite.Image = CType(resources.GetObject("picSprite.Image"), System.Drawing.Image)
-        Me.picSprite.Location = New System.Drawing.Point(486, 12)
+        Me.picSprite.Location = New System.Drawing.Point(364, 10)
+        Me.picSprite.Margin = New System.Windows.Forms.Padding(2)
         Me.picSprite.Name = "picSprite"
-        Me.picSprite.Size = New System.Drawing.Size(152, 136)
+        Me.picSprite.Size = New System.Drawing.Size(114, 110)
         Me.picSprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picSprite.TabIndex = 1
         Me.picSprite.TabStop = False
@@ -159,9 +180,10 @@ Partial Class MainForm
         'picDietCola
         '
         Me.picDietCola.Image = CType(resources.GetObject("picDietCola.Image"), System.Drawing.Image)
-        Me.picDietCola.Location = New System.Drawing.Point(170, 12)
+        Me.picDietCola.Location = New System.Drawing.Point(128, 10)
+        Me.picDietCola.Margin = New System.Windows.Forms.Padding(2)
         Me.picDietCola.Name = "picDietCola"
-        Me.picDietCola.Size = New System.Drawing.Size(152, 136)
+        Me.picDietCola.Size = New System.Drawing.Size(114, 110)
         Me.picDietCola.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picDietCola.TabIndex = 1
         Me.picDietCola.TabStop = False
@@ -169,9 +191,10 @@ Partial Class MainForm
         'PictureBox8
         '
         Me.PictureBox8.Image = CType(resources.GetObject("PictureBox8.Image"), System.Drawing.Image)
-        Me.PictureBox8.Location = New System.Drawing.Point(170, 154)
+        Me.PictureBox8.Location = New System.Drawing.Point(128, 164)
+        Me.PictureBox8.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(152, 136)
+        Me.PictureBox8.Size = New System.Drawing.Size(114, 110)
         Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox8.TabIndex = 1
         Me.PictureBox8.TabStop = False
@@ -179,9 +202,10 @@ Partial Class MainForm
         'picPowerade
         '
         Me.picPowerade.Image = CType(resources.GetObject("picPowerade.Image"), System.Drawing.Image)
-        Me.picPowerade.Location = New System.Drawing.Point(328, 154)
+        Me.picPowerade.Location = New System.Drawing.Point(246, 164)
+        Me.picPowerade.Margin = New System.Windows.Forms.Padding(2)
         Me.picPowerade.Name = "picPowerade"
-        Me.picPowerade.Size = New System.Drawing.Size(152, 136)
+        Me.picPowerade.Size = New System.Drawing.Size(114, 110)
         Me.picPowerade.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPowerade.TabIndex = 1
         Me.picPowerade.TabStop = False
@@ -189,9 +213,10 @@ Partial Class MainForm
         'picRoot
         '
         Me.picRoot.Image = CType(resources.GetObject("picRoot.Image"), System.Drawing.Image)
-        Me.picRoot.Location = New System.Drawing.Point(486, 154)
+        Me.picRoot.Location = New System.Drawing.Point(364, 164)
+        Me.picRoot.Margin = New System.Windows.Forms.Padding(2)
         Me.picRoot.Name = "picRoot"
-        Me.picRoot.Size = New System.Drawing.Size(152, 136)
+        Me.picRoot.Size = New System.Drawing.Size(114, 110)
         Me.picRoot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picRoot.TabIndex = 1
         Me.picRoot.TabStop = False
@@ -199,9 +224,10 @@ Partial Class MainForm
         'PictureBox12
         '
         Me.PictureBox12.Image = CType(resources.GetObject("PictureBox12.Image"), System.Drawing.Image)
-        Me.PictureBox12.Location = New System.Drawing.Point(170, 154)
+        Me.PictureBox12.Location = New System.Drawing.Point(128, 164)
+        Me.PictureBox12.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox12.Name = "PictureBox12"
-        Me.PictureBox12.Size = New System.Drawing.Size(152, 136)
+        Me.PictureBox12.Size = New System.Drawing.Size(114, 110)
         Me.PictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox12.TabIndex = 1
         Me.PictureBox12.TabStop = False
@@ -209,9 +235,10 @@ Partial Class MainForm
         'picPibb
         '
         Me.picPibb.Image = CType(resources.GetObject("picPibb.Image"), System.Drawing.Image)
-        Me.picPibb.Location = New System.Drawing.Point(170, 154)
+        Me.picPibb.Location = New System.Drawing.Point(128, 164)
+        Me.picPibb.Margin = New System.Windows.Forms.Padding(2)
         Me.picPibb.Name = "picPibb"
-        Me.picPibb.Size = New System.Drawing.Size(152, 136)
+        Me.picPibb.Size = New System.Drawing.Size(114, 110)
         Me.picPibb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPibb.TabIndex = 1
         Me.picPibb.TabStop = False
@@ -219,9 +246,10 @@ Partial Class MainForm
         'picPepper
         '
         Me.picPepper.Image = CType(resources.GetObject("picPepper.Image"), System.Drawing.Image)
-        Me.picPepper.Location = New System.Drawing.Point(170, 296)
+        Me.picPepper.Location = New System.Drawing.Point(128, 306)
+        Me.picPepper.Margin = New System.Windows.Forms.Padding(2)
         Me.picPepper.Name = "picPepper"
-        Me.picPepper.Size = New System.Drawing.Size(152, 136)
+        Me.picPepper.Size = New System.Drawing.Size(114, 110)
         Me.picPepper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picPepper.TabIndex = 1
         Me.picPepper.TabStop = False
@@ -229,9 +257,10 @@ Partial Class MainForm
         'picMello
         '
         Me.picMello.Image = CType(resources.GetObject("picMello.Image"), System.Drawing.Image)
-        Me.picMello.Location = New System.Drawing.Point(328, 296)
+        Me.picMello.Location = New System.Drawing.Point(246, 306)
+        Me.picMello.Margin = New System.Windows.Forms.Padding(2)
         Me.picMello.Name = "picMello"
-        Me.picMello.Size = New System.Drawing.Size(152, 136)
+        Me.picMello.Size = New System.Drawing.Size(114, 110)
         Me.picMello.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picMello.TabIndex = 1
         Me.picMello.TabStop = False
@@ -239,9 +268,10 @@ Partial Class MainForm
         'picMinute
         '
         Me.picMinute.Image = CType(resources.GetObject("picMinute.Image"), System.Drawing.Image)
-        Me.picMinute.Location = New System.Drawing.Point(486, 296)
+        Me.picMinute.Location = New System.Drawing.Point(364, 306)
+        Me.picMinute.Margin = New System.Windows.Forms.Padding(2)
         Me.picMinute.Name = "picMinute"
-        Me.picMinute.Size = New System.Drawing.Size(152, 136)
+        Me.picMinute.Size = New System.Drawing.Size(114, 110)
         Me.picMinute.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picMinute.TabIndex = 1
         Me.picMinute.TabStop = False
@@ -249,9 +279,10 @@ Partial Class MainForm
         'picSpriteZero
         '
         Me.picSpriteZero.Image = CType(resources.GetObject("picSpriteZero.Image"), System.Drawing.Image)
-        Me.picSpriteZero.Location = New System.Drawing.Point(12, 154)
+        Me.picSpriteZero.Location = New System.Drawing.Point(9, 164)
+        Me.picSpriteZero.Margin = New System.Windows.Forms.Padding(2)
         Me.picSpriteZero.Name = "picSpriteZero"
-        Me.picSpriteZero.Size = New System.Drawing.Size(152, 136)
+        Me.picSpriteZero.Size = New System.Drawing.Size(114, 110)
         Me.picSpriteZero.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picSpriteZero.TabIndex = 1
         Me.picSpriteZero.TabStop = False
@@ -259,9 +290,10 @@ Partial Class MainForm
         'PicFanta
         '
         Me.PicFanta.Image = CType(resources.GetObject("PicFanta.Image"), System.Drawing.Image)
-        Me.PicFanta.Location = New System.Drawing.Point(12, 296)
+        Me.PicFanta.Location = New System.Drawing.Point(9, 306)
+        Me.PicFanta.Margin = New System.Windows.Forms.Padding(2)
         Me.PicFanta.Name = "PicFanta"
-        Me.PicFanta.Size = New System.Drawing.Size(152, 136)
+        Me.PicFanta.Size = New System.Drawing.Size(114, 110)
         Me.PicFanta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PicFanta.TabIndex = 1
         Me.PicFanta.TabStop = False
@@ -270,9 +302,10 @@ Partial Class MainForm
         '
         Me.rad16oz.AutoSize = True
         Me.rad16oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad16oz.Location = New System.Drawing.Point(226, 464)
+        Me.rad16oz.Location = New System.Drawing.Point(191, 465)
+        Me.rad16oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad16oz.Name = "rad16oz"
-        Me.rad16oz.Size = New System.Drawing.Size(97, 36)
+        Me.rad16oz.Size = New System.Drawing.Size(77, 30)
         Me.rad16oz.TabIndex = 2
         Me.rad16oz.TabStop = True
         Me.rad16oz.Text = "16oz"
@@ -282,9 +315,10 @@ Partial Class MainForm
         '
         Me.rad24oz.AutoSize = True
         Me.rad24oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad24oz.Location = New System.Drawing.Point(342, 464)
+        Me.rad24oz.Location = New System.Drawing.Point(277, 465)
+        Me.rad24oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad24oz.Name = "rad24oz"
-        Me.rad24oz.Size = New System.Drawing.Size(97, 36)
+        Me.rad24oz.Size = New System.Drawing.Size(77, 30)
         Me.rad24oz.TabIndex = 2
         Me.rad24oz.TabStop = True
         Me.rad24oz.Text = "24oz"
@@ -294,9 +328,10 @@ Partial Class MainForm
         '
         Me.rad32oz.AutoSize = True
         Me.rad32oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad32oz.Location = New System.Drawing.Point(457, 464)
+        Me.rad32oz.Location = New System.Drawing.Point(364, 465)
+        Me.rad32oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad32oz.Name = "rad32oz"
-        Me.rad32oz.Size = New System.Drawing.Size(97, 36)
+        Me.rad32oz.Size = New System.Drawing.Size(77, 30)
         Me.rad32oz.TabIndex = 2
         Me.rad32oz.TabStop = True
         Me.rad32oz.Text = "32oz"
@@ -311,20 +346,142 @@ Partial Class MainForm
         '
         Me.rad8oz.AutoSize = True
         Me.rad8oz.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rad8oz.Location = New System.Drawing.Point(116, 464)
+        Me.rad8oz.Location = New System.Drawing.Point(108, 465)
+        Me.rad8oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad8oz.Name = "rad8oz"
-        Me.rad8oz.Size = New System.Drawing.Size(81, 36)
+        Me.rad8oz.Size = New System.Drawing.Size(65, 30)
         Me.rad8oz.TabIndex = 2
         Me.rad8oz.TabStop = True
         Me.rad8oz.Text = "8oz"
         Me.rad8oz.UseVisualStyleBackColor = True
         '
+        'chkCola
+        '
+        Me.chkCola.AutoSize = True
+        Me.chkCola.Location = New System.Drawing.Point(58, 125)
+        Me.chkCola.Name = "chkCola"
+        Me.chkCola.Size = New System.Drawing.Size(15, 14)
+        Me.chkCola.TabIndex = 3
+        Me.chkCola.UseVisualStyleBackColor = True
+        '
+        'chkDietCoke
+        '
+        Me.chkDietCoke.AutoSize = True
+        Me.chkDietCoke.Location = New System.Drawing.Point(181, 125)
+        Me.chkDietCoke.Name = "chkDietCoke"
+        Me.chkDietCoke.Size = New System.Drawing.Size(15, 14)
+        Me.chkDietCoke.TabIndex = 3
+        Me.chkDietCoke.UseVisualStyleBackColor = True
+        '
+        'chkSprite
+        '
+        Me.chkSprite.AutoSize = True
+        Me.chkSprite.Location = New System.Drawing.Point(416, 125)
+        Me.chkSprite.Name = "chkSprite"
+        Me.chkSprite.Size = New System.Drawing.Size(15, 14)
+        Me.chkSprite.TabIndex = 3
+        Me.chkSprite.UseVisualStyleBackColor = True
+        '
+        'chkColaZero
+        '
+        Me.chkColaZero.AutoSize = True
+        Me.chkColaZero.Location = New System.Drawing.Point(297, 125)
+        Me.chkColaZero.Name = "chkColaZero"
+        Me.chkColaZero.Size = New System.Drawing.Size(15, 14)
+        Me.chkColaZero.TabIndex = 3
+        Me.chkColaZero.UseVisualStyleBackColor = True
+        '
+        'chkSpriteZero
+        '
+        Me.chkSpriteZero.AutoSize = True
+        Me.chkSpriteZero.Location = New System.Drawing.Point(58, 279)
+        Me.chkSpriteZero.Name = "chkSpriteZero"
+        Me.chkSpriteZero.Size = New System.Drawing.Size(15, 14)
+        Me.chkSpriteZero.TabIndex = 3
+        Me.chkSpriteZero.UseVisualStyleBackColor = True
+        '
+        'chkPibb
+        '
+        Me.chkPibb.AutoSize = True
+        Me.chkPibb.Location = New System.Drawing.Point(181, 279)
+        Me.chkPibb.Name = "chkPibb"
+        Me.chkPibb.Size = New System.Drawing.Size(15, 14)
+        Me.chkPibb.TabIndex = 3
+        Me.chkPibb.UseVisualStyleBackColor = True
+        '
+        'chkPowerade
+        '
+        Me.chkPowerade.AutoSize = True
+        Me.chkPowerade.Location = New System.Drawing.Point(297, 279)
+        Me.chkPowerade.Name = "chkPowerade"
+        Me.chkPowerade.Size = New System.Drawing.Size(15, 14)
+        Me.chkPowerade.TabIndex = 3
+        Me.chkPowerade.UseVisualStyleBackColor = True
+        '
+        'chkBarqs
+        '
+        Me.chkBarqs.AutoSize = True
+        Me.chkBarqs.Location = New System.Drawing.Point(416, 279)
+        Me.chkBarqs.Name = "chkBarqs"
+        Me.chkBarqs.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkBarqs.Size = New System.Drawing.Size(15, 14)
+        Me.chkBarqs.TabIndex = 3
+        Me.chkBarqs.UseVisualStyleBackColor = True
+        '
+        'chkFanta
+        '
+        Me.chkFanta.AutoSize = True
+        Me.chkFanta.Location = New System.Drawing.Point(58, 421)
+        Me.chkFanta.Name = "chkFanta"
+        Me.chkFanta.Size = New System.Drawing.Size(15, 14)
+        Me.chkFanta.TabIndex = 3
+        Me.chkFanta.UseVisualStyleBackColor = True
+        '
+        'chkDrPepper
+        '
+        Me.chkDrPepper.AutoSize = True
+        Me.chkDrPepper.Location = New System.Drawing.Point(181, 421)
+        Me.chkDrPepper.Name = "chkDrPepper"
+        Me.chkDrPepper.Size = New System.Drawing.Size(15, 14)
+        Me.chkDrPepper.TabIndex = 3
+        Me.chkDrPepper.UseVisualStyleBackColor = True
+        '
+        'chkMelloYello
+        '
+        Me.chkMelloYello.AutoSize = True
+        Me.chkMelloYello.Location = New System.Drawing.Point(297, 421)
+        Me.chkMelloYello.Name = "chkMelloYello"
+        Me.chkMelloYello.Size = New System.Drawing.Size(15, 14)
+        Me.chkMelloYello.TabIndex = 3
+        Me.chkMelloYello.UseVisualStyleBackColor = True
+        '
+        'chkMinuteMaid
+        '
+        Me.chkMinuteMaid.AutoSize = True
+        Me.chkMinuteMaid.Location = New System.Drawing.Point(416, 421)
+        Me.chkMinuteMaid.Name = "chkMinuteMaid"
+        Me.chkMinuteMaid.Size = New System.Drawing.Size(15, 14)
+        Me.chkMinuteMaid.TabIndex = 3
+        Me.chkMinuteMaid.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
-        Me.ClientSize = New System.Drawing.Size(821, 512)
+        Me.ClientSize = New System.Drawing.Size(616, 506)
+        Me.Controls.Add(Me.chkColaZero)
+        Me.Controls.Add(Me.chkSprite)
+        Me.Controls.Add(Me.chkDietCoke)
+        Me.Controls.Add(Me.chkBarqs)
+        Me.Controls.Add(Me.chkPowerade)
+        Me.Controls.Add(Me.chkPibb)
+        Me.Controls.Add(Me.chkMinuteMaid)
+        Me.Controls.Add(Me.chkMelloYello)
+        Me.Controls.Add(Me.chkDrPepper)
+        Me.Controls.Add(Me.chkFanta)
+        Me.Controls.Add(Me.chkSpriteZero)
+        Me.Controls.Add(Me.chkCola)
         Me.Controls.Add(Me.rad32oz)
         Me.Controls.Add(Me.rad24oz)
         Me.Controls.Add(Me.rad8oz)
@@ -349,6 +506,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.btnSyrupLvl)
         Me.Controls.Add(Me.btnStatistics)
         Me.Controls.Add(Me.btnReports)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "MainForm"
         Me.Text = "CocoCola Free Style"
         CType(Me.picCola, System.ComponentModel.ISupportInitialize).EndInit()
@@ -397,4 +555,16 @@ Partial Class MainForm
     Friend WithEvents rad32oz As RadioButton
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
     Friend WithEvents rad8oz As RadioButton
+    Friend WithEvents chkColaZero As CheckBox
+    Friend WithEvents chkSprite As CheckBox
+    Friend WithEvents chkDietCoke As CheckBox
+    Friend WithEvents chkBarqs As CheckBox
+    Friend WithEvents chkPowerade As CheckBox
+    Friend WithEvents chkPibb As CheckBox
+    Friend WithEvents chkSpriteZero As CheckBox
+    Friend WithEvents chkCola As CheckBox
+    Friend WithEvents chkMinuteMaid As CheckBox
+    Friend WithEvents chkMelloYello As CheckBox
+    Friend WithEvents chkDrPepper As CheckBox
+    Friend WithEvents chkFanta As CheckBox
 End Class
