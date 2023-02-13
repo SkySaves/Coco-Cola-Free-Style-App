@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.btnReports = New System.Windows.Forms.Button()
@@ -48,18 +48,6 @@ Partial Class MainForm
         Me.rad32oz = New System.Windows.Forms.RadioButton()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
         Me.rad8oz = New System.Windows.Forms.RadioButton()
-        Me.chkCola = New System.Windows.Forms.CheckBox()
-        Me.chkDietCoke = New System.Windows.Forms.CheckBox()
-        Me.chkSprite = New System.Windows.Forms.CheckBox()
-        Me.chkColaZero = New System.Windows.Forms.CheckBox()
-        Me.chkSpriteZero = New System.Windows.Forms.CheckBox()
-        Me.chkPibb = New System.Windows.Forms.CheckBox()
-        Me.chkPowerade = New System.Windows.Forms.CheckBox()
-        Me.chkBarqs = New System.Windows.Forms.CheckBox()
-        Me.chkFanta = New System.Windows.Forms.CheckBox()
-        Me.chkDrPepper = New System.Windows.Forms.CheckBox()
-        Me.chkMelloYello = New System.Windows.Forms.CheckBox()
-        Me.chkMinuteMaid = New System.Windows.Forms.CheckBox()
         CType(Me.picCola, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picColaZero, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,7 +73,7 @@ Partial Class MainForm
         Me.btnReports.Margin = New System.Windows.Forms.Padding(2)
         Me.btnReports.Name = "btnReports"
         Me.btnReports.Size = New System.Drawing.Size(92, 59)
-        Me.btnReports.TabIndex = 0
+        Me.btnReports.TabIndex = 6
         Me.btnReports.Text = "Reports"
         Me.btnReports.UseVisualStyleBackColor = False
         '
@@ -96,7 +84,7 @@ Partial Class MainForm
         Me.btnStatistics.Margin = New System.Windows.Forms.Padding(2)
         Me.btnStatistics.Name = "btnStatistics"
         Me.btnStatistics.Size = New System.Drawing.Size(92, 59)
-        Me.btnStatistics.TabIndex = 0
+        Me.btnStatistics.TabIndex = 7
         Me.btnStatistics.Text = "Statistics"
         Me.btnStatistics.UseVisualStyleBackColor = False
         '
@@ -107,7 +95,7 @@ Partial Class MainForm
         Me.btnSyrupLvl.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSyrupLvl.Name = "btnSyrupLvl"
         Me.btnSyrupLvl.Size = New System.Drawing.Size(92, 59)
-        Me.btnSyrupLvl.TabIndex = 0
+        Me.btnSyrupLvl.TabIndex = 8
         Me.btnSyrupLvl.Text = "Syrup Level"
         Me.btnSyrupLvl.UseVisualStyleBackColor = False
         '
@@ -118,7 +106,7 @@ Partial Class MainForm
         Me.btnOrderSyrup.Margin = New System.Windows.Forms.Padding(2)
         Me.btnOrderSyrup.Name = "btnOrderSyrup"
         Me.btnOrderSyrup.Size = New System.Drawing.Size(92, 59)
-        Me.btnOrderSyrup.TabIndex = 0
+        Me.btnOrderSyrup.TabIndex = 9
         Me.btnOrderSyrup.Text = "Re-Order Syrup"
         Me.btnOrderSyrup.UseVisualStyleBackColor = False
         '
@@ -129,7 +117,7 @@ Partial Class MainForm
         Me.btnMixDisp.Margin = New System.Windows.Forms.Padding(2)
         Me.btnMixDisp.Name = "btnMixDisp"
         Me.btnMixDisp.Size = New System.Drawing.Size(92, 59)
-        Me.btnMixDisp.TabIndex = 0
+        Me.btnMixDisp.TabIndex = 5
         Me.btnMixDisp.Text = "Mix/Dispense"
         Me.btnMixDisp.UseVisualStyleBackColor = False
         '
@@ -319,7 +307,7 @@ Partial Class MainForm
         Me.rad24oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad24oz.Name = "rad24oz"
         Me.rad24oz.Size = New System.Drawing.Size(77, 30)
-        Me.rad24oz.TabIndex = 2
+        Me.rad24oz.TabIndex = 3
         Me.rad24oz.TabStop = True
         Me.rad24oz.Text = "24oz"
         Me.rad24oz.UseVisualStyleBackColor = True
@@ -332,7 +320,7 @@ Partial Class MainForm
         Me.rad32oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad32oz.Name = "rad32oz"
         Me.rad32oz.Size = New System.Drawing.Size(77, 30)
-        Me.rad32oz.TabIndex = 2
+        Me.rad32oz.TabIndex = 4
         Me.rad32oz.TabStop = True
         Me.rad32oz.Text = "32oz"
         Me.rad32oz.UseVisualStyleBackColor = True
@@ -350,119 +338,10 @@ Partial Class MainForm
         Me.rad8oz.Margin = New System.Windows.Forms.Padding(2)
         Me.rad8oz.Name = "rad8oz"
         Me.rad8oz.Size = New System.Drawing.Size(65, 30)
-        Me.rad8oz.TabIndex = 2
+        Me.rad8oz.TabIndex = 1
         Me.rad8oz.TabStop = True
         Me.rad8oz.Text = "8oz"
         Me.rad8oz.UseVisualStyleBackColor = True
-        '
-        'chkCola
-        '
-        Me.chkCola.AutoSize = True
-        Me.chkCola.Location = New System.Drawing.Point(58, 125)
-        Me.chkCola.Name = "chkCola"
-        Me.chkCola.Size = New System.Drawing.Size(15, 14)
-        Me.chkCola.TabIndex = 3
-        Me.chkCola.UseVisualStyleBackColor = True
-        '
-        'chkDietCoke
-        '
-        Me.chkDietCoke.AutoSize = True
-        Me.chkDietCoke.Location = New System.Drawing.Point(181, 125)
-        Me.chkDietCoke.Name = "chkDietCoke"
-        Me.chkDietCoke.Size = New System.Drawing.Size(15, 14)
-        Me.chkDietCoke.TabIndex = 3
-        Me.chkDietCoke.UseVisualStyleBackColor = True
-        '
-        'chkSprite
-        '
-        Me.chkSprite.AutoSize = True
-        Me.chkSprite.Location = New System.Drawing.Point(416, 125)
-        Me.chkSprite.Name = "chkSprite"
-        Me.chkSprite.Size = New System.Drawing.Size(15, 14)
-        Me.chkSprite.TabIndex = 3
-        Me.chkSprite.UseVisualStyleBackColor = True
-        '
-        'chkColaZero
-        '
-        Me.chkColaZero.AutoSize = True
-        Me.chkColaZero.Location = New System.Drawing.Point(297, 125)
-        Me.chkColaZero.Name = "chkColaZero"
-        Me.chkColaZero.Size = New System.Drawing.Size(15, 14)
-        Me.chkColaZero.TabIndex = 3
-        Me.chkColaZero.UseVisualStyleBackColor = True
-        '
-        'chkSpriteZero
-        '
-        Me.chkSpriteZero.AutoSize = True
-        Me.chkSpriteZero.Location = New System.Drawing.Point(58, 279)
-        Me.chkSpriteZero.Name = "chkSpriteZero"
-        Me.chkSpriteZero.Size = New System.Drawing.Size(15, 14)
-        Me.chkSpriteZero.TabIndex = 3
-        Me.chkSpriteZero.UseVisualStyleBackColor = True
-        '
-        'chkPibb
-        '
-        Me.chkPibb.AutoSize = True
-        Me.chkPibb.Location = New System.Drawing.Point(181, 279)
-        Me.chkPibb.Name = "chkPibb"
-        Me.chkPibb.Size = New System.Drawing.Size(15, 14)
-        Me.chkPibb.TabIndex = 3
-        Me.chkPibb.UseVisualStyleBackColor = True
-        '
-        'chkPowerade
-        '
-        Me.chkPowerade.AutoSize = True
-        Me.chkPowerade.Location = New System.Drawing.Point(297, 279)
-        Me.chkPowerade.Name = "chkPowerade"
-        Me.chkPowerade.Size = New System.Drawing.Size(15, 14)
-        Me.chkPowerade.TabIndex = 3
-        Me.chkPowerade.UseVisualStyleBackColor = True
-        '
-        'chkBarqs
-        '
-        Me.chkBarqs.AutoSize = True
-        Me.chkBarqs.Location = New System.Drawing.Point(416, 279)
-        Me.chkBarqs.Name = "chkBarqs"
-        Me.chkBarqs.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkBarqs.Size = New System.Drawing.Size(15, 14)
-        Me.chkBarqs.TabIndex = 3
-        Me.chkBarqs.UseVisualStyleBackColor = True
-        '
-        'chkFanta
-        '
-        Me.chkFanta.AutoSize = True
-        Me.chkFanta.Location = New System.Drawing.Point(58, 421)
-        Me.chkFanta.Name = "chkFanta"
-        Me.chkFanta.Size = New System.Drawing.Size(15, 14)
-        Me.chkFanta.TabIndex = 3
-        Me.chkFanta.UseVisualStyleBackColor = True
-        '
-        'chkDrPepper
-        '
-        Me.chkDrPepper.AutoSize = True
-        Me.chkDrPepper.Location = New System.Drawing.Point(181, 421)
-        Me.chkDrPepper.Name = "chkDrPepper"
-        Me.chkDrPepper.Size = New System.Drawing.Size(15, 14)
-        Me.chkDrPepper.TabIndex = 3
-        Me.chkDrPepper.UseVisualStyleBackColor = True
-        '
-        'chkMelloYello
-        '
-        Me.chkMelloYello.AutoSize = True
-        Me.chkMelloYello.Location = New System.Drawing.Point(297, 421)
-        Me.chkMelloYello.Name = "chkMelloYello"
-        Me.chkMelloYello.Size = New System.Drawing.Size(15, 14)
-        Me.chkMelloYello.TabIndex = 3
-        Me.chkMelloYello.UseVisualStyleBackColor = True
-        '
-        'chkMinuteMaid
-        '
-        Me.chkMinuteMaid.AutoSize = True
-        Me.chkMinuteMaid.Location = New System.Drawing.Point(416, 421)
-        Me.chkMinuteMaid.Name = "chkMinuteMaid"
-        Me.chkMinuteMaid.Size = New System.Drawing.Size(15, 14)
-        Me.chkMinuteMaid.TabIndex = 3
-        Me.chkMinuteMaid.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -470,18 +349,6 @@ Partial Class MainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(616, 506)
-        Me.Controls.Add(Me.chkColaZero)
-        Me.Controls.Add(Me.chkSprite)
-        Me.Controls.Add(Me.chkDietCoke)
-        Me.Controls.Add(Me.chkBarqs)
-        Me.Controls.Add(Me.chkPowerade)
-        Me.Controls.Add(Me.chkPibb)
-        Me.Controls.Add(Me.chkMinuteMaid)
-        Me.Controls.Add(Me.chkMelloYello)
-        Me.Controls.Add(Me.chkDrPepper)
-        Me.Controls.Add(Me.chkFanta)
-        Me.Controls.Add(Me.chkSpriteZero)
-        Me.Controls.Add(Me.chkCola)
         Me.Controls.Add(Me.rad32oz)
         Me.Controls.Add(Me.rad24oz)
         Me.Controls.Add(Me.rad8oz)
@@ -555,16 +422,4 @@ Partial Class MainForm
     Friend WithEvents rad32oz As RadioButton
     Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
     Friend WithEvents rad8oz As RadioButton
-    Friend WithEvents chkColaZero As CheckBox
-    Friend WithEvents chkSprite As CheckBox
-    Friend WithEvents chkDietCoke As CheckBox
-    Friend WithEvents chkBarqs As CheckBox
-    Friend WithEvents chkPowerade As CheckBox
-    Friend WithEvents chkPibb As CheckBox
-    Friend WithEvents chkSpriteZero As CheckBox
-    Friend WithEvents chkCola As CheckBox
-    Friend WithEvents chkMinuteMaid As CheckBox
-    Friend WithEvents chkMelloYello As CheckBox
-    Friend WithEvents chkDrPepper As CheckBox
-    Friend WithEvents chkFanta As CheckBox
 End Class
