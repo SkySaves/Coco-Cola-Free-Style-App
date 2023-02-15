@@ -1,10 +1,18 @@
-﻿Imports System.Windows
+﻿Imports System.Text
+Imports System.Windows
 
 Public Class MainForm
     Private selectedFlavors As New List(Of String)
     Private flavorLimit As Integer = 3
+    Private syrupBoxSize As Double = 34 ' 1L syrup box size in oz
+    Private CO2BoxSize As Double = 170 ' 5L CO2 box size in oz
+    Private lowSyrupThreshold As Double = 12 ' 0.3L syrup threshold in oz
+    Private lowCO2Threshold As Double = 54 ' 1.5L CO2 threshold in oz
+    Private syrupDispensed As New Dictionary(Of String, Double)
+    Private CO2Dispensed As Double = 0
+
     Private Sub btnMixDisp_Click(sender As Object, e As EventArgs) Handles btnMixDisp.Click
-        If Not (rad16oz.Checked Or rad16oz.Checked Or rad24oz.Checked Or rad32oz.Checked) Then
+        If Not (rad8oz.Checked Or rad16oz.Checked Or rad24oz.Checked Or rad32oz.Checked) Then
             ' No radio button is selected
             MessageBox.Show("Please select a size before dispensing.")
         ElseIf selectedFlavors.Count < 1 Then
@@ -15,14 +23,30 @@ Public Class MainForm
             MessageBox.Show("You can only mix up to three flavors. Please select " & flavorLimit & " or fewer flavors.")
         Else
             Dim oz As Integer
-            oz = If(rad16oz.Checked, 8, If(rad16oz.Checked, 16, If(rad24oz.Checked, 24, 32)))
+            oz = If(rad8oz.Checked, 8, If(rad16oz.Checked, 16, If(rad24oz.Checked, 24, 32)))
             Dim flavors As String = String.Join(", ", selectedFlavors)
             Dim result As DialogResult = MessageBox.Show("Now dispensing " & oz & " oz of " & flavors & "." & vbCrLf & "Do you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
             If result = DialogResult.Yes Then
                 ' okay button was clicked
-                Dim syrup As Double = oz / selectedFlavors.Count
-                Dim CO2 As Double = oz / selectedFlavors.Count
-                MessageBox.Show("Dispensed " & syrup & " oz of syrup and " & CO2 & " oz of CO2 for each flavor.")
+                Dim syrupPerFlavor As Double = oz / (selectedFlavors.Count * 2)
+                Dim CO2PerFlavor As Double = oz / (selectedFlavors.Count * 2)
+                Dim totalSyrupDispensed As Double = 0
+                For Each flavor In selectedFlavors
+                    syrupDispensed.TryGetValue(flavor, totalSyrupDispensed)
+                    totalSyrupDispensed += syrupPerFlavor
+                    syrupDispensed(flavor) = totalSyrupDispensed
+                Next
+                CO2Dispensed += CO2PerFlavor
+                MessageBox.Show("Dispensed " & syrupPerFlavor & " oz of syrup and " & CO2PerFlavor & " oz of CO2 for each flavor.")
+                ' Check low thresholds
+                If CO2Dispensed < lowCO2Threshold Then
+                    MessageBox.Show("CO2 fluid level is low.")
+                End If
+                For Each flavor In selectedFlavors
+                    If syrupDispensed(flavor) < lowSyrupThreshold Then
+                        MessageBox.Show(flavor & " syrup level is low.")
+                    End If
+                Next
             Else
                 ' No button was clicked
             End If
@@ -223,6 +247,57 @@ Public Class MainForm
         If selectedFlavors.Count >= flavorLimit Then
             MessageBox.Show("You have reached the maximum number of flavors.")
             Return
+        End If
+    End Sub
+
+    Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
+
+    End Sub
+
+    Private Sub btnSyrupLvl_Click(sender As Object, e As EventArgs) Handles btnSyrupLvl.Click
+        Dim syrupLevels As New StringBuilder()
+        For Each flavor In syrupDispensed.Keys
+            Dim ozDispensed As Double = syrupDispensed(flavor)
+            Dim boxesDispensed As Integer = Math.Floor(ozDispensed / syrupBoxSize)
+            Dim ozRemaining As Double = ozDispensed Mod syrupBoxSize
+            syrupLevels.AppendLine(flavor & ": " & boxesDispensed & " boxes, " & ozRemaining & " oz remaining")
+        Next
+        MessageBox.Show(syrupLevels.ToString())
+    End Sub
+
+    Private Sub btnOrderSyrup_Click(sender As Object, e As EventArgs) Handles btnOrderSyrup.Click
+        Dim orderForm As New OrderSyrup()
+        orderForm.ShowDialog()
+
+        If orderForm.DialogResult = DialogResult.OK Then
+            ' Update the syrup levels
+            For Each flavor In orderForm.OrderedSyrups.Keys
+                Dim numBoxes As Integer = orderForm.OrderedSyrups(flavor)
+                If syrupDispensed.ContainsKey(flavor) Then
+                    syrupDispensed(flavor) += numBoxes * syrupBoxSize
+                Else
+                    syrupDispensed.Add(flavor, numBoxes * syrupBoxSize)
+                End If
+            Next
+
+            ' Check the CO2 and syrup levels and display a message box
+            Dim lowLevels As New StringBuilder()
+            Dim co2Remaining As Double = CO2Dispensed - CO2BoxSize / 2 * syrupDispensed.Count
+            If co2Remaining < lowCO2Threshold Then
+                lowLevels.AppendLine("CO2 is running low.")
+            End If
+            For Each flavor In syrupDispensed.Keys
+                Dim ozDispensed As Double = syrupDispensed(flavor)
+                Dim ozRemaining As Double = ozDispensed Mod syrupBoxSize
+                If ozRemaining < lowSyrupThreshold Then
+                    lowLevels.AppendLine(flavor & " is running low.")
+                End If
+            Next
+            If lowLevels.Length > 0 Then
+                MessageBox.Show("Syrup and CO2 levels are low." & vbCrLf & lowLevels.ToString())
+            Else
+                MessageBox.Show("Syrup and CO2 levels are normal.")
+            End If
         End If
     End Sub
 End Class
