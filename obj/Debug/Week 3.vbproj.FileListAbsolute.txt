@@ -55,3 +55,4 @@ C:\Users\sande\Source\Repos\SkySaves\Coco-Cola-Free-Style-App\obj\Debug\Week 3.e
 C:\Users\sande\Source\Repos\SkySaves\Coco-Cola-Free-Style-App\obj\Debug\Week 3.xml
 C:\Users\sande\Source\Repos\SkySaves\Coco-Cola-Free-Style-App\obj\Debug\Week 3.pdb
 C:\Users\sande\Source\Repos\SkySaves\Coco-Cola-Free-Style-App\obj\Debug\Week_3.OrderSyrup.resources
+C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week_3.OrderSyrup.resources
