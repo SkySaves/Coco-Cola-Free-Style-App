@@ -101,12 +101,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="OrderSyrup.Designer.vb">
-      <DependentUpon>OrderSyrup.vb</DependentUpon>
-    </Compile>
-    <Compile Include="OrderSyrup.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -120,9 +114,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrderSyrup.resx">
-      <DependentUpon>OrderSyrup.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -385,11 +385,18 @@ Public Class MainForm
         Dim lowSyrups As New List(Of String)
         Dim message As String = ""
 
+        ' Create a list of keys to modify
+        Dim keysToModify As New List(Of String)
         For Each key As String In syrupLevels.Keys
             If syrupLevels(key) <= 0.3 Then
                 lowSyrups.Add(key)
-                syrupLevels(key) = 10.0
+                keysToModify.Add(key)
             End If
+        Next
+
+        ' Modify the keys in the dictionary
+        For Each key As String In keysToModify
+            syrupLevels(key) = 10.0
         Next
 
         If lowSyrups.Count > 0 Then
@@ -405,6 +412,7 @@ Public Class MainForm
             MessageBox.Show(message, "Order Syrups")
         End If
     End Sub
+
 
     Private Sub btnSyrupLvl_Click(sender As Object, e As EventArgs) Handles btnSyrupLvl.Click
         Dim message As String = "Current syrup levels:" & vbNewLine
