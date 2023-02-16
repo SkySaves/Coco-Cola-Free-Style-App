@@ -107,7 +107,7 @@ Partial Class MainForm
         Me.btnOrderSyrup.Name = "btnOrderSyrup"
         Me.btnOrderSyrup.Size = New System.Drawing.Size(92, 59)
         Me.btnOrderSyrup.TabIndex = 9
-        Me.btnOrderSyrup.Text = "Re-Order Syrup"
+        Me.btnOrderSyrup.Text = "Re-Order Syrup/CO2"
         Me.btnOrderSyrup.UseVisualStyleBackColor = False
         '
         'btnMixDisp
