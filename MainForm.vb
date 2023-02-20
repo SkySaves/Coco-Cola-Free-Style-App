@@ -396,7 +396,7 @@ Public Class MainForm
 
         ' Modify the keys in the dictionary
         For Each key As String In keysToModify
-            syrupLevels(key) = 10.0
+            syrupLevels(key) = 1.0
         Next
 
         If lowSyrups.Count > 0 Then
