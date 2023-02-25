@@ -32,25 +32,8 @@ Public Class MainForm
     Dim selectedFlavor3 As String = "None"
     Dim flavorLimit As Integer = 3
 
-    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cboSize = New ComboBox
-        cboSize.Items.Add("Small")
-        cboSize.Items.Add("Medium")
-        cboSize.Items.Add("Large")
-        cboSize.SelectedIndex = 0
 
-        If cboSize IsNot Nothing Then
-            cboSize.SelectedIndex = 0
-        End If
-        If cboFlavor1 IsNot Nothing Then
-            cboFlavor1.SelectedIndex = 0
-        End If
-        If cboFlavor2 IsNot Nothing Then
-            cboFlavor2.SelectedIndex = 0
-        End If
-        If cboFlavor3 IsNot Nothing Then
-            cboFlavor3.SelectedIndex = 0
-        End If
+    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         For Each key As String In syrupLevels.Keys
             If syrupLevels(key) <= 0.3 Then
@@ -89,7 +72,6 @@ Public Class MainForm
 
 
 
-        Dim selectedSize As String = ""
         If rad8oz.Checked Then
             selectedSize = "8oz"
         ElseIf rad16oz.Checked Then
@@ -105,10 +87,8 @@ Public Class MainForm
             Return
         End If
 
-        Dim totalSyrupConsumed As Double = 0
-        Dim c02Consumed As Double = 0
-
         Select Case selectedSize
+            'we can remove the division from the c02 consumed and just set it to 0.1, 0.2, 0.3, and 0.4 if we want to. I just left it in there to show how it would work if we wanted to change the amount of CO2 consumed based on the size of the drink.
             Case "8oz"
                 totalSyrupConsumed = 0.1
                 c02Consumed = 0.1 / 2
@@ -123,6 +103,7 @@ Public Class MainForm
                 c02Consumed = 0.4 / 2
             Case Else
                 ' Handle the case where an invalid size is selected
+                MessageBox.Show("Please select a valid size.")
         End Select
 
         For Each flavor As String In selectedFlavors
@@ -131,7 +112,8 @@ Public Class MainForm
                     MessageBox.Show("The flavor '" & flavor & "' is too low to dispense.")
                     Return
                 Else
-                    Dim syrupConsumed As Double = totalSyrupConsumed / selectedFlavors.Count
+                    'This is dividing the total syrup consumed by the number of flavors selected and then subtracting that from the syrup level for each flavor. This will will not subtract .1 from each flavor if 8oz is selected, but will subtract .1 from each flavor if 16oz is selected.
+                    syrupConsumed = totalSyrupConsumed / selectedFlavors.Count
                     syrupLevels(flavor) -= syrupConsumed
 
                 End If
