@@ -1,14 +1,5 @@
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\bin\Debug\Week 3.exe.config
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\bin\Debug\Week 3.exe
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\bin\Debug\Week 3.pdb
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\bin\Debug\Week 3.xml
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\ColaMachine.vbproj.AssemblyReference.cache
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\ColaMachine.vbproj.SuggestedBindingRedirects.cache
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week_3.MainForm.resources
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week_3.ColaSelections.resources
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week_3.Resources.resources
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\ColaMachine.vbproj.GenerateResource.cache
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\ColaMachine.vbproj.CoreCompileInputs.cache
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week 3.exe
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week 3.xml
-C:\Users\sande\Source\Repos\Coco-Cola-Free-Style-App\obj\Debug\Week 3.pdb
+C:\Users\sande\Documents\GitHub\Coco-Cola-Free-Style-App\obj\Debug\ColaMachine.vbproj.AssemblyReference.cache
+C:\Users\sande\Documents\GitHub\Coco-Cola-Free-Style-App\obj\Debug\ColaMachine.vbproj.SuggestedBindingRedirects.cache
+C:\Users\sande\Documents\GitHub\Coco-Cola-Free-Style-App\obj\Debug\Week 3.exe
+C:\Users\sande\Documents\GitHub\Coco-Cola-Free-Style-App\obj\Debug\Week 3.xml
+C:\Users\sande\Documents\GitHub\Coco-Cola-Free-Style-App\obj\Debug\Week 3.pdb

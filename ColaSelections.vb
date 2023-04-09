@@ -2,7 +2,7 @@
 
     Public flavor As String
     Private Sub picCola2_Click(sender As Object, e As EventArgs) Handles picCola2.Click
-        ClickHandler("Coca Cola")
+        ClickHandler("Coco Cola")
     End Sub
 
     Private Sub picColaCreme_Click(sender As Object, e As EventArgs) Handles picColaCreme.Click

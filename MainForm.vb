@@ -1,28 +1,24 @@
 ﻿Imports System.Security.Policy
 Imports System.Text
 Imports System.Windows
+Imports System.Data.SQLite
+Imports System.Collections.ObjectModel
+Imports System.Data.Common
+Imports Microsoft.Data.Sqlite
+
+
+
 Public Class MainForm
-    Private syrupLevels As New Dictionary(Of String, Double) From {
-    {"Coca Cola", 1.0},
-    {"Diet Cola", 1.0},
-    {"Cola Zero", 1.0},
-    {"Pibb Xtra", 1.0},
-    {"Mello Yello", 1.0},
-    {"Minute Maid", 1.0},
-    {"Powerade", 1.0},
-    {"Sprite", 1.0},
-    {"Sprite Zero", 1.0},
-    {"Fanta", 1.0},
-    {"Dr. Pepper", 1.0},
-    {"Barq's", 1.0}
-}
-    Dim co2Level As Double = 5.0
+
+    Dim connString As String = "Data Source=ColaMachine.db;Version=3;"
+    Dim connection As New SqliteConnection(connString)
+
+    Dim co2Level As Double
     Dim cboSize As ComboBox = Me.Controls("cboSize")
     Dim cboFlavor1 As ComboBox = Me.Controls("cboFlavor1")
     Dim cboFlavor2 As ComboBox = Me.Controls("cboFlavor2")
     Dim cboFlavor3 As ComboBox = Me.Controls("cboFlavor3")
     Dim totalSyrupConsumed As Double = 0.0
-    Dim syrupConsumed As Double = 0.0
     Dim c02Consumed As Double = 0.0
     Dim lowCo2 As Boolean = False
     Dim selectedFlavors As List(Of String) = New List(Of String)
@@ -31,46 +27,101 @@ Public Class MainForm
     Dim selectedFlavor2 As String = "None"
     Dim selectedFlavor3 As String = "None"
     Dim flavorLimit As Integer = 3
+    Private fluidLevels As New Dictionary(Of String, Tuple(Of Integer, Double))()
+
+
+
 
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        connection.Open() 'Open the connection to the database
 
-        For Each key As String In syrupLevels.Keys
-            If syrupLevels(key) <= 0.3 Then
-                Dim result As DialogResult = MessageBox.Show("The syrup level for " & key & " is low. Please order more syrup.", "Low Syrup Level", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                If result = DialogResult.OK Then
-                    Return
-                End If
-            End If
-        Next
+        ' Retrieve the current fluid levels from the Fluid table
+        Dim fluidQuery As String = "SELECT FluidID, FlavorName, CurrAmount FROM Fluid"
+        ' Define the query to retrieve the current fluid levels for the flavors and CO2
+        Using fluidCmd As New SQLiteCommand(fluidQuery, connection)
+            ' Create a new SQLiteCommand object using the query and the connection
+            Using fluidReader As SQLiteDataReader = fluidCmd.ExecuteReader()
+                ' Use the SQLiteDataReader object to execute the query and retrieve the results
+                While fluidReader.Read() ' Loop through each record in the result set
+                    Dim fluidID As Integer = fluidReader.GetInt32(0) ' Get the FluidID from the first column
+                    Dim flavorName As String = fluidReader.GetString(1) ' Get the name of the flavor from the second column
+                    Dim currAmount As Double = fluidReader.GetDouble(2) ' Get the current amount of fluid for the flavor from the third column
+                    fluidLevels(flavorName) = Tuple.Create(fluidID, currAmount) ' Add the flavor and its current amount of fluid to the dictionary
+                End While
+            End Using
+        End Using
 
-        If co2Level <= 1.5 Then
-            MessageBox.Show("The CO2 level is low. Please order more CO2.")
-            lowCo2 = True
-        End If
+        ' Retrieve the current CO2 level from the Fluid table
+        Dim co2Query As String = "SELECT CurrAmount FROM Fluid WHERE FlavorName = 'CO2'"
+
+        ' Define the query to retrieve the current CO2 level
+        Using co2Cmd As New SQLiteCommand(co2Query, connection)
+            ' Create a new SQLiteCommand object using the query and the connection
+            co2Level = co2Cmd.ExecuteScalar() ' Execute the query and get the result (current CO2 level)
+        End Using
     End Sub
 
+
+
+
+
+
+
     Private Sub btnMixDisp_Click(sender As Object, e As EventArgs) Handles btnMixDisp.Click
+
+        Dim flavorAmountsToUpdate As New Dictionary(Of String, Double)()
         If selectedFlavors.Count = 0 Then
             MessageBox.Show("Please select at least one flavor.")
             Return
         End If
 
+        ' Database connection string
+        Dim connectionString As String = "Data Source=ColaMachine.db"
+
+        ' Read fluid levels and IDs from the database
+        Dim fluidLevels As New Dictionary(Of String, Tuple(Of Integer, Double))()
+        Dim nextOrderID As Integer
+        Dim co2Level As Double
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+
+            Dim orderIDQuery As String = "SELECT MAX(OrderID) FROM [Order]"
+            Using orderIDCmd As New SQLiteCommand(orderIDQuery, connection)
+                Dim orderIDResult = orderIDCmd.ExecuteScalar()
+                nextOrderID = If(orderIDResult IsNot DBNull.Value, Convert.ToInt32(orderIDResult) + 1, 1)
+            End Using
+
+            Using command As New SQLiteCommand("SELECT FluidID, FlavorName, CurrAmount FROM Fluid", connection)
+                Using reader As SQLiteDataReader = command.ExecuteReader()
+                    While reader.Read()
+                        Dim flavorName As String = reader.GetString(1)
+                        If flavorName = "CO2" Then
+                            co2Level = reader.GetDouble(2)
+                        Else
+                            Dim fluidID As Integer = reader.GetInt32(0)
+                            Dim currAmount As Double = reader.GetDouble(2)
+                            fluidLevels.Add(flavorName, Tuple.Create(fluidID, currAmount))
+                        End If
+                    End While
+                End Using
+            End Using
+        End Using
+
         For Each flavor As String In selectedFlavors
-            If syrupLevels.ContainsKey(flavor) Then
-                If syrupLevels(flavor) < 0.1 Then
+            If fluidLevels.ContainsKey(flavor) Then
+                Dim currAmount As Double = fluidLevels(flavor).Item2
+                If currAmount < 0.1 Then
                     MessageBox.Show("The flavor '" & flavor & "' is too low to dispense.")
                     Return
-                ElseIf syrupLevels(flavor) <= 0.3 Then
+                ElseIf currAmount <= 0.3 Then
                     MessageBox.Show("The syrup level for '" & flavor & "' is low. Please order more syrup.")
                 End If
             Else
-                MessageBox.Show("The flavor " & flavor & " is not in the syrup levels dictionary. Please correct this.", "Invalid Flavor", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("The flavor " & flavor & " is not in the fluid levels dictionary. Please correct this.", "Invalid Flavor", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return
             End If
         Next
-
-
 
         If rad8oz.Checked Then
             selectedSize = "8oz"
@@ -87,50 +138,194 @@ Public Class MainForm
             Return
         End If
 
+        ' Calculate the total syrup consumed based on the selected size
+        Dim syrupConsumedInOz As Double
         Select Case selectedSize
-            'we can remove the division from the c02 consumed and just set it to 0.1, 0.2, 0.3, and 0.4 if we want to. I just left it in there to show how it would work if we wanted to change the amount of CO2 consumed based on the size of the drink.
             Case "8oz"
-                totalSyrupConsumed = 0.1
-                c02Consumed = 0.1 / 2
+                syrupConsumedInOz = 4 ' Half of 8oz in syrup
             Case "16oz"
-                totalSyrupConsumed = 0.2
-                c02Consumed = 0.2 / 2
+                syrupConsumedInOz = 8 ' Half of 16oz in syrup
             Case "24oz"
-                totalSyrupConsumed = 0.3
-                c02Consumed = 0.3 / 2
+                syrupConsumedInOz = 12 ' Half of 24oz in syrup
             Case "32oz"
-                totalSyrupConsumed = 0.4
-                c02Consumed = 0.4 / 2
-            Case Else
-                ' Handle the case where an invalid size is selected
-                MessageBox.Show("Please select a valid size.")
+                syrupConsumedInOz = 16 ' Half of 32oz in syrup
         End Select
 
+        ' Convert syrup consumed in ounces to liters
+        Dim syrupConsumed As Double = syrupConsumedInOz * 0.0295735 ' Convert syrup consumed in ounces to liters
+
+        Dim c02Consumed As Double = syrupConsumed * 0.0295735 ' CO2 consumed is equal
+
+
+        ' Check if there's enough CO2 available
+        If co2Level - c02Consumed < 0 Then
+            MessageBox.Show("There's not enough CO2 to complete the order.", "Insufficient CO2", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         For Each flavor As String In selectedFlavors
-            If syrupLevels.ContainsKey(flavor) Then
-                If syrupLevels(flavor) < 0.1 Then
+            If fluidLevels.ContainsKey(flavor) Then
+                Dim currAmount As Double = fluidLevels(flavor).Item2
+                ' Check if there's enough syrup available for this flavor
+                If currAmount - syrupConsumed < 0 Then
+                    MessageBox.Show("There's not enough of the flavor '" & flavor & "' to complete the order.", "Insufficient Syrup", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                ElseIf currAmount < 0.1 Then
                     MessageBox.Show("The flavor '" & flavor & "' is too low to dispense.")
                     Return
-                Else
-                    'This is dividing the total syrup consumed by the number of flavors selected and then subtracting that from the syrup level for each flavor. This will will not subtract .1 from each flavor if 8oz is selected, but will subtract .1 from each flavor if 16oz is selected.
-                    syrupConsumed = totalSyrupConsumed / selectedFlavors.Count
-                    syrupLevels(flavor) -= syrupConsumed
-
+                ElseIf currAmount <= 0.3 Then
+                    MessageBox.Show("The syrup level for '" & flavor & "' is low. Please order more syrup.")
                 End If
             Else
-                MessageBox.Show("The flavor " & flavor & " is not in the syrup levels dictionary. Please correct this.", "Invalid Flavor", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("The flavor " & flavor & " is not in the fluid levels dictionary. Please correct this.", "Invalid Flavor", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return
             End If
         Next
+
+        ' Insert a new order in the Order table
+        Dim orderDesc As String = String.Join(", ", selectedFlavors)
+        Dim orderAmount As Double = 0 ' Initialize order amount to 0
+
+        ' Calculate the total order amount based on the selected size
+        Select Case selectedSize
+            Case "8oz"
+                orderAmount = 1.5
+            Case "16oz"
+                orderAmount = 2.5
+            Case "24oz"
+                orderAmount = 3.5
+            Case "32oz"
+                orderAmount = 4.5
+        End Select
+
         Dim result As DialogResult = MessageBox.Show("Dispense " & selectedSize.ToString & " of " & String.Join(", ", selectedFlavors) & "?", "Confirm Dispense", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
+            ' Update the fluid levels in the database and create a new order
+            Using connection As New SQLiteConnection(connectionString)
+                connection.Open()
+
+                ' Begin a transaction
+                Using transaction As SQLiteTransaction = connection.BeginTransaction()
+                    Try
+                        ' Insert a new order in the Order table
+                        For Each flavor As String In selectedFlavors
+                            Using insertOrderCommand As New SQLiteCommand("INSERT INTO [Order] (OrderDesc, OrderAmount, FluidID, FluidAmount, OrderDate) VALUES (@OrderDesc, @OrderAmount, @FluidID, @FluidAmount, @OrderDate)", connection, transaction)
+                                insertOrderCommand.Parameters.AddWithValue("@OrderDesc", orderDesc)
+                                insertOrderCommand.Parameters.AddWithValue("@OrderAmount", orderAmount)
+                                insertOrderCommand.Parameters.AddWithValue("@FluidID", fluidLevels(flavor).Item1) ' Update FluidID with the current fluid ID
+                                insertOrderCommand.Parameters.AddWithValue("@FluidAmount", syrupConsumed) ' Update FluidAmount with syrup consumed in ounces
+                                insertOrderCommand.Parameters.AddWithValue("@OrderDate", DateTime.Now.ToString("yyyy-MM-dd")) ' Add the OrderDate parameter
+                                insertOrderCommand.ExecuteNonQuery()
+
+                                ' Get the ID of the newly inserted order
+                                nextOrderID = connection.LastInsertRowId
+                            End Using
+                        Next
+
+
+                        For Each flavor As String In selectedFlavors
+                            If fluidLevels.ContainsKey(flavor) Then
+                                Dim fluidID As Integer = fluidLevels(flavor).Item1
+                                Dim currAmount As Double = fluidLevels(flavor).Item2 - syrupConsumed
+
+                                ' Update fluid levels in the Fluid table
+                                Using updateCommand As New SQLiteCommand("UPDATE Fluid SET CurrAmount = @CurrAmount WHERE FluidID = @FluidID", connection, transaction)
+                                    updateCommand.Parameters.AddWithValue("@CurrAmount", currAmount)
+                                    updateCommand.Parameters.AddWithValue("@FluidID", fluidID)
+                                    updateCommand.ExecuteNonQuery()
+                                End Using
+
+                                ' Insert a new order line for each flavor in the mix
+                                Using insertOrderLineCommand As New SQLiteCommand("INSERT INTO OrderLine (OrderID, FluidID, FluidAmount, OrderDate) VALUES (@OrderID, @FluidID, @FluidAmount, @OrderDate)", connection, transaction)
+                                    insertOrderLineCommand.Parameters.AddWithValue("@OrderID", nextOrderID)
+                                    insertOrderLineCommand.Parameters.AddWithValue("@FluidID", fluidID)
+                                    insertOrderLineCommand.Parameters.AddWithValue("@FluidAmount", syrupConsumed) ' Update FluidAmount with syrup consumed in ounces
+                                    insertOrderLineCommand.Parameters.AddWithValue("@OrderDate", DateTime.Now.ToString("yyyy-MM-dd")) ' Add the OrderDate parameter
+                                    insertOrderLineCommand.ExecuteNonQuery()
+                                End Using
+                            End If
+                        Next
+                        If co2Level < 0.3 Then
+                            MessageBox.Show("CO2 is running low. Please refill the CO2 tank.", "Low CO2", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+
+                        ' Update CO2 level after committing the transaction
+                        co2Level -= c02Consumed
+                        Using updateCommand As New SQLiteCommand("UPDATE Fluid SET CurrAmount = @CurrAmount WHERE FlavorName = 'CO2'", connection, transaction)
+                            updateCommand.Parameters.AddWithValue("@CurrAmount", co2Level)
+                            updateCommand.ExecuteNonQuery()
+                        End Using
+
+                        ' Commit the transaction
+                        transaction.Commit()
+
+
+
+                        If co2Level < 0.1 Then
+                            MessageBox.Show("CO2 is running low. Please refill the CO2 tank.", "Low CO2", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        End If
+
+                        ' Insert a new mixture and corresponding mixture components for each flavor in the mix
+                        Using insertMixtureCommand As New SQLiteCommand("INSERT INTO Mixture (MixtureName, Description) VALUES (@MixtureName, @Description)", connection)
+                            insertMixtureCommand.Parameters.AddWithValue("@MixtureName", orderDesc)
+                            insertMixtureCommand.Parameters.AddWithValue("@Description", "Mixture for order #" & nextOrderID.ToString())
+                            insertMixtureCommand.ExecuteNonQuery()
+
+                            ' Get the ID of the newly inserted mixture
+                            Dim newMixtureID As Integer = connection.LastInsertRowId
+
+                            For Each flavor As String In selectedFlavors
+                                If fluidLevels.ContainsKey(flavor) Then
+                                    Dim fluidID As Integer = fluidLevels(flavor).Item1
+                                    Dim proportion As Double = 1.0 / selectedFlavors.Count ' Assuming equal proportion for each flavor in the mix
+
+                                    ' Insert a new MixtureComponent entry for each flavor in the mix
+                                    Using insertMixtureComponentCommand As New SQLiteCommand("INSERT INTO MixtureComponent (MixtureID, FluidID, Proportion) VALUES (@MixtureID, @FluidID, @Proportion)", connection)
+                                        insertMixtureComponentCommand.Parameters.AddWithValue("@MixtureID", newMixtureID)
+                                        insertMixtureComponentCommand.Parameters.AddWithValue("@FluidID", fluidID)
+                                        insertMixtureComponentCommand.Parameters.AddWithValue("@Proportion", proportion)
+                                        insertMixtureComponentCommand.ExecuteNonQuery()
+                                    End Using
+                                End If
+                            Next
+                        End Using
+                    Catch ex As Exception
+                        ' Rollback the transaction if any error occurs
+                        transaction.Rollback()
+                        MessageBox.Show("An error occurred while updating the database: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Return
+                    End Try
+                End Using
+            End Using
+
+
+
+            For Each flavor As String In selectedFlavors
+                If fluidLevels.ContainsKey(flavor) Then
+                    Dim currAmount As Double = fluidLevels(flavor).Item2
+                    Dim newAmount As Double = currAmount - syrupConsumed
+                    fluidLevels(flavor) = Tuple.Create(fluidLevels(flavor).Item1, newAmount)
+                    flavorAmountsToUpdate.Add(flavor, newAmount)
+                End If
+            Next
+
             MessageBox.Show("Dispensing " & selectedSize.ToString & " of " & String.Join(", ", selectedFlavors) & ".")
-            co2Level -= c02Consumed
-            If co2Level < 0.1 Then
-                MessageBox.Show("CO2 is running low. Please refill the CO2 tank.", "Low CO2", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
+
+            ' Update the fluid levels in the Fluid table
+            For Each flavorAmountToUpdate As KeyValuePair(Of String, Double) In flavorAmountsToUpdate
+                Dim flavor As String = flavorAmountToUpdate.Key
+                Dim newAmount As Double = flavorAmountToUpdate.Value
+                Dim updateQuery As String = $"UPDATE Fluid SET CurrAmount = @CurrAmount WHERE FlavorName = @FlavorName"
+
+                Using updateCommand As New SQLiteCommand(updateQuery, connection)
+                    updateCommand.Parameters.AddWithValue("@CurrAmount", newAmount)
+                    updateCommand.Parameters.AddWithValue("@FlavorName", flavor)
+                    updateCommand.ExecuteNonQuery()
+                End Using
+            Next
         End If
     End Sub
+
 
 
     Private Sub picCola_Click(sender As Object, e As EventArgs) Handles picCola.Click
@@ -290,7 +485,7 @@ Public Class MainForm
 
 
         If selectedFlavors.Contains("Barq's") Then
-                selectedFlavors.Remove("Barq's")
+            selectedFlavors.Remove("Barq's")
             picRoot.BackColor = Color.White
         Else
             selectedFlavors.Add("Barq's")
@@ -359,49 +554,80 @@ Public Class MainForm
         End If
     End Sub
 
-    Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-
+    ' Syrup Level Report Button Click
+    Private Sub btnSyrupLvl_Click(sender As Object, e As EventArgs) Handles btnSyrupLvl.Click
+        Dim fluidLevelReportForm As New FluidLevelReportForm()
+        fluidLevelReportForm.ShowDialog()
     End Sub
 
+
+    ' Order Syrups Button Click
     Private Sub btnOrderSyrup_Click(sender As Object, e As EventArgs) Handles btnOrderSyrup.Click
+        Dim connectionString As String = "Data Source=ColaMachine.db"
         Dim lowSyrups As New List(Of String)
         Dim message As String = ""
 
-        ' Create a list of keys to modify
-        Dim keysToModify As New List(Of String)
-        For Each key As String In syrupLevels.Keys
-            If syrupLevels(key) <= 0.3 Then
-                lowSyrups.Add(key)
-                keysToModify.Add(key)
+        Using connection As New SQLiteConnection(connectionString)
+            connection.Open()
+
+            ' Get low syrups from Fluid table
+            Dim getLowSyrupsQuery As String = "SELECT FlavorName, FluidID FROM Fluid WHERE CurrAmount / Capacity <= 0.3"
+            Using command As New SQLiteCommand(getLowSyrupsQuery, connection)
+                Using reader As SQLiteDataReader = command.ExecuteReader()
+                    While reader.Read()
+                        lowSyrups.Add(reader("FlavorName").ToString())
+                        Dim fluidID As Integer = Convert.ToInt32(reader("FluidID"))
+
+                        ' Update the syrup level and maintenance date in the Fluid table
+                        Dim updateSyrupLevelQuery As String = $"UPDATE Fluid SET CurrAmount = Capacity, MaintDt = datetime('now') WHERE FluidID = {fluidID}"
+                        Using updateCommand As New SQLiteCommand(updateSyrupLevelQuery, connection)
+                            updateCommand.ExecuteNonQuery()
+                        End Using
+                    End While
+                End Using
+            End Using
+
+            If lowSyrups.Count > 0 Then
+                message = "The following syrups have been replenished: " & String.Join(", ", lowSyrups) & vbNewLine
             End If
-        Next
 
-        ' Modify the keys in the dictionary
-        For Each key As String In keysToModify
-            syrupLevels(key) = 1.0
-        Next
+            ' Replace this condition with the actual CO2 level check in your application
+            If co2Level <= 1.5 Then
+                co2Level = 5.0
+                ' Update the CO2 level and maintenance date in the Fluid table for the CO2 entry
+                Dim updateCO2LevelQuery As String = "UPDATE Fluid SET CurrAmount = 5.0, MaintDt = datetime('now') WHERE FluidName = 'CO2'"
+                Using updateCommand As New SQLiteCommand(updateCO2LevelQuery, connection)
+                    updateCommand.ExecuteNonQuery()
+                End Using
 
-        If lowSyrups.Count > 0 Then
-            message = "The following syrups have been replenished: " & String.Join(", ", lowSyrups) & vbNewLine
-        End If
+                message &= "Co2 has been replenished."
+            End If
 
-        If co2Level <= 1.5 Then
-            co2Level = 5.0
-            message &= "Co2 has been replenished."
-        End If
-
-        If message <> "" Then
-            MessageBox.Show(message, "Order Syrups")
-        End If
+            If message <> "" Then
+                MessageBox.Show(message, "Order Syrups")
+            End If
+        End Using
     End Sub
 
 
-    Private Sub btnSyrupLvl_Click(sender As Object, e As EventArgs) Handles btnSyrupLvl.Click
-        Dim message As String = "Current syrup levels:" & vbNewLine
-        For Each key As String In syrupLevels.Keys
-            message &= key & ": " & syrupLevels(key).ToString("0.0") & " liters" & vbNewLine
-        Next
-        message &= "Co2: " & co2Level.ToString("0.0") & " liters"
-        MessageBox.Show(message, "Syrup and Co2 Levels")
+
+
+
+
+
+    Private Sub btnLocalReport_Click(sender As Object, e As EventArgs) Handles btnLocalReport.Click
+        Dim localReportForm As New LocalReport()
+        localReportForm.ShowDialog()
     End Sub
+
+    Private Sub btnMaintenanceReport_Click(sender As Object, e As EventArgs) Handles btnMaintenanceReport.Click
+        Dim maintenanceReportForm As New MaintenanceReportForm()
+        maintenanceReportForm.ShowDialog()
+    End Sub
+
+    Private Sub btnOrderReport_Click(sender As Object, e As EventArgs) Handles btnOrderReport.Click
+        Dim orderReportForm As New OrderReportForm()
+        orderReportForm.ShowDialog()
+    End Sub
+
 End Class
