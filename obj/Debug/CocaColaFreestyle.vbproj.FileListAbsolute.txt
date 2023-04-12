@@ -1,0 +1,29 @@
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\Week 3.exe.config
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\Week 3.exe
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\Week 3.pdb
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\Week 3.xml
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\SQLitePCLRaw.core.dll
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Buffers.dll
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Data.SQLite.dll
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Memory.dll
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Buffers.xml
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Memory.xml
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\CocaColaFreestyle.vbproj.AssemblyReference.cache
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\CocaColaFreestyle.vbproj.SuggestedBindingRedirects.cache
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.FluidLevelReportForm.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.LocalReport.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.MainForm.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.ColaSelections.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.MaintenanceReportForm.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.Resources.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week_3.OrderReportForm.resources
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\CocaColaFreestyle.vbproj.GenerateResource.cache
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\CocaColaFreestyle.vbproj.CoreCompileInputs.cache
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\CocaColaFreestyle.vbproj.CopyComplete
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week 3.exe
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week 3.xml
+C:\Users\sande\Desktop\Coco-Cola-Free-Style-App\obj\Debug\Week 3.pdb

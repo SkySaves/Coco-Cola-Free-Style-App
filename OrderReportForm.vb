@@ -21,7 +21,19 @@ Public Class OrderReportForm
 
     Public Sub GenerateOrderReport(startDate As Date, endDate As Date)
         ' Query for the order report data
+<<<<<<< Updated upstream
         Dim query As String = $"SELECT ""Order"".OrderID AS OrderNumber, OrderLine.OrderLineID AS LineNumber, ""Order"".OrderDate, Fluid.FlavorName, Mixture.MixtureName, OrderLine.FluidAmount AS OrderAmount FROM ""Order"" INNER JOIN OrderLine ON ""Order"".OrderID = OrderLine.OrderID INNER JOIN Fluid ON OrderLine.FluidID = Fluid.FluidID INNER JOIN Mixture ON OrderLine.MixtureID = Mixture.MixtureID WHERE ""Order"".OrderDate BETWEEN '{startDate:yyyy-MM-dd}' AND '{endDate:yyyy-MM-dd}' ORDER BY ""Order"".OrderID, OrderLine.OrderLineID"
+=======
+        Dim query As String = $"SELECT ""Order"".OrderID AS OrderNumber, ""Order"".OrderDate, GROUP_CONCAT(Fluid.FlavorName, ', ') AS FlavorNames, GROUP_CONCAT(OrderLine.FluidAmount, ', ') AS FluidAmounts, SUM(OrderLine.FluidAmount * Fluid.Cost) AS TotalPrice
+                       FROM ""Order""
+                       INNER JOIN OrderLine ON ""Order"".OrderID = OrderLine.OrderID
+                       INNER JOIN Fluid ON OrderLine.FluidID = Fluid.FluidID
+                       WHERE ""Order"".OrderDate BETWEEN '{startDate:yyyy-MM-dd}' AND '{endDate:yyyy-MM-dd}'
+                       GROUP BY ""Order"".OrderID, ""Order"".OrderDate
+                       ORDER BY ""Order"".OrderID"
+
+
+>>>>>>> Stashed changes
 
         Dim dataTable As DataTable = ExecuteQuery(query)
         Dim report As New StringBuilder()
@@ -41,6 +53,7 @@ Public Class OrderReportForm
 
 
 
+<<<<<<< Updated upstream
 
 
 
@@ -76,6 +89,31 @@ Public Class OrderReportForm
         End If
 
 
+=======
+        Dim totalSales As Double = 0
+
+        For Each row As DataRow In dataTable.Rows
+            Dim orderDate As Date = CType(row("OrderDate"), Date)
+            Dim orderNumber As Integer = CInt(row("OrderNumber"))
+            Dim flavorNames As String = row("FlavorNames").ToString()
+            Dim fluidAmounts As String = row("FluidAmounts").ToString()
+            Dim totalPrice As Double = CDbl(row("TotalPrice"))
+
+            report.AppendLine($"Date of Purchase: {orderDate:MM/dd/yyyy}")
+            report.AppendLine($"Order #: {orderNumber}")
+            report.AppendLine($"Syrup(s) Ordered: {flavorNames}")
+            report.AppendLine($"Size(s) Dispensed: {fluidAmounts}")
+            report.AppendLine($"Price: ${totalPrice:0.00}")
+            report.AppendLine()
+
+            totalSales += totalPrice
+        Next
+
+        report.AppendLine($"Total Sales: ${totalSales:0.00}")
+
+
+
+>>>>>>> Stashed changes
         txtOrderReport.Text = report.ToString()
 
     End Sub
