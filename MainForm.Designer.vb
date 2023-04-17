@@ -387,11 +387,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.btnLocalReport)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "MainForm"
-<<<<<<< Updated upstream
-        Me.Text = "CocoCola Free Style"
-=======
-        Me.Text = "CocaCola Free Style"
->>>>>>> Stashed changes
+        Me.Text = "CocaCola Freestyle"
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picSprite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picColaZero, System.ComponentModel.ISupportInitialize).EndInit()

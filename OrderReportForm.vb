@@ -21,9 +21,6 @@ Public Class OrderReportForm
 
     Public Sub GenerateOrderReport(startDate As Date, endDate As Date)
         ' Query for the order report data
-<<<<<<< Updated upstream
-        Dim query As String = $"SELECT ""Order"".OrderID AS OrderNumber, OrderLine.OrderLineID AS LineNumber, ""Order"".OrderDate, Fluid.FlavorName, Mixture.MixtureName, OrderLine.FluidAmount AS OrderAmount FROM ""Order"" INNER JOIN OrderLine ON ""Order"".OrderID = OrderLine.OrderID INNER JOIN Fluid ON OrderLine.FluidID = Fluid.FluidID INNER JOIN Mixture ON OrderLine.MixtureID = Mixture.MixtureID WHERE ""Order"".OrderDate BETWEEN '{startDate:yyyy-MM-dd}' AND '{endDate:yyyy-MM-dd}' ORDER BY ""Order"".OrderID, OrderLine.OrderLineID"
-=======
         Dim query As String = $"SELECT ""Order"".OrderID AS OrderNumber, ""Order"".OrderDate, GROUP_CONCAT(Fluid.FlavorName, ', ') AS FlavorNames, GROUP_CONCAT(OrderLine.FluidAmount, ', ') AS FluidAmounts, SUM(OrderLine.FluidAmount * Fluid.Cost) AS TotalPrice
                        FROM ""Order""
                        INNER JOIN OrderLine ON ""Order"".OrderID = OrderLine.OrderID
@@ -33,7 +30,6 @@ Public Class OrderReportForm
                        ORDER BY ""Order"".OrderID"
 
 
->>>>>>> Stashed changes
 
         Dim dataTable As DataTable = ExecuteQuery(query)
         Dim report As New StringBuilder()
@@ -53,43 +49,6 @@ Public Class OrderReportForm
 
 
 
-<<<<<<< Updated upstream
-
-
-
-
-
-
-
-
-
-        Dim mostRequestedFlavorResult As DataTable = ExecuteQuery(mostRequestedFlavorQuery)
-        If mostRequestedFlavorResult.Rows.Count > 0 Then
-            mostRequestedFlavor = mostRequestedFlavorResult.Rows(0)
-            report.AppendLine($"Most Requested Flavor: {mostRequestedFlavor("FlavorName")} ({mostRequestedFlavor("FlavorCount")} times)")
-        End If
-
-        Dim mostRequestedMixtureResult As DataTable = ExecuteQuery(mostRequestedMixtureQuery)
-        If mostRequestedMixtureResult.Rows.Count > 0 Then
-            mostRequestedMixture = mostRequestedMixtureResult.Rows(0)
-            report.AppendLine($"Most Requested Mixture: {mostRequestedMixture("MixtureName")} ({mostRequestedMixture("MixtureCount")} times)")
-        End If
-
-        Dim leastRequestedFlavorResult As DataTable = ExecuteQuery(leastRequestedFlavorQuery)
-        If leastRequestedFlavorResult.Rows.Count > 0 Then
-            leastRequestedFlavor = leastRequestedFlavorResult.Rows(0)
-            report.AppendLine($"Least Requested Flavor: {leastRequestedFlavor("FlavorName")} ({leastRequestedFlavor("FlavorCount")} times)")
-        End If
-
-        Dim mostCommonSizeResult As DataTable = ExecuteQuery(mostCommonSizeQuery)
-        If mostCommonSizeResult.Rows.Count > 0 Then
-            mostCommonSize = mostCommonSizeResult.Rows(0)
-            report.AppendLine($"Most Common Size Dispensed: {mostCommonSize("Size")}oz ({mostCommonSize("SizeCount")})")
-
-        End If
-
-
-=======
         Dim totalSales As Double = 0
 
         For Each row As DataRow In dataTable.Rows
@@ -113,7 +72,6 @@ Public Class OrderReportForm
 
 
 
->>>>>>> Stashed changes
         txtOrderReport.Text = report.ToString()
 
     End Sub

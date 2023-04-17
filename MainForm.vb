@@ -567,17 +567,9 @@ Public Class MainForm
         Dim lowSyrups As New List(Of String)
         Dim message As String = ""
 
-<<<<<<< Updated upstream
-        Using connection As New SQLiteConnection(connectionString)
-            connection.Open()
-
-            ' Get low syrups from Fluid table
-            Dim getLowSyrupsQuery As String = "SELECT FlavorName, FluidID FROM Fluid WHERE CurrAmount / Capacity <= 0.3"
-=======
 
         ' Get low syrups from Fluid table
         Dim getLowSyrupsQuery As String = "SELECT FlavorName, FluidID FROM Fluid WHERE CurrAmount / Capacity <= 0.3"
->>>>>>> Stashed changes
             Using command As New SQLiteCommand(getLowSyrupsQuery, connection)
                 Using reader As SQLiteDataReader = command.ExecuteReader()
                     While reader.Read()
@@ -602,16 +594,11 @@ Public Class MainForm
                 co2Level = 5.0
                 ' Update the CO2 level and maintenance date in the Fluid table for the CO2 entry
                 Dim updateCO2LevelQuery As String = "UPDATE Fluid SET CurrAmount = 5.0, MaintDt = datetime('now') WHERE FluidName = 'CO2'"
-<<<<<<< Updated upstream
-                Using updateCommand As New SQLiteCommand(updateCO2LevelQuery, connection)
-                    updateCommand.ExecuteNonQuery()
-=======
                 Using connection As New SQLiteConnection(connectionString)
 
                 Using updateCommand As New SQLiteCommand(updateCO2LevelQuery, connection)
                         updateCommand.ExecuteNonQuery()
                     End Using
->>>>>>> Stashed changes
                 End Using
 
                 message &= "Co2 has been replenished."
@@ -619,14 +606,9 @@ Public Class MainForm
 
             If message <> "" Then
                 MessageBox.Show(message, "Order Syrups")
-<<<<<<< Updated upstream
-            End If
-        End Using
-=======
             Else
                 MessageBox.Show("No syrups or CO2 currently need to be refilled.", "Order Syrups")
             End If
->>>>>>> Stashed changes
     End Sub
 
 
@@ -635,10 +617,7 @@ Public Class MainForm
 
 
 
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     Private Sub btnLocalReport_Click(sender As Object, e As EventArgs) Handles btnLocalReport.Click
         Dim localReportForm As New LocalReport()
         localReportForm.ShowDialog()

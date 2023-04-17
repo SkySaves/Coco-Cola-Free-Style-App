@@ -36,14 +36,6 @@ Public Class FluidLevelReportForm
             ' Use the ToString method with the "F2" format string to display the value with 2 decimal places
             report.AppendLine($"{FlavorName}: {CurrAmount.ToString("0.00")} liters (low threshold: 0.3 liters)")
 
-<<<<<<< Updated upstream
-
-
-
-
-
-=======
->>>>>>> Stashed changes
         Next
 
         txtFluidLevelReport.Text = report.ToString()

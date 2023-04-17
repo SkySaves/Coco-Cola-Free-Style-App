@@ -72,4 +72,5 @@ Public Class MaintenanceReportForm
     Private Sub MaintenanceReportForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GenerateMaintenanceReport()
     End Sub
+
 End Class
